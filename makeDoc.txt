@@ -1,0 +1,3 @@
+sphinx-apidoc -F -l -d 3 -o <PATH>/doc <PATH>
+cd doc
+make html
