@@ -16,4 +16,16 @@ Get Documents from DB -> generate one file per language "Stopwords filter and Le
 ## WorkFlow API
 GET Query -> Doc Solr -> doc embedding -> Neural Network -> JSON Response
 
+### PostgreSQL Table (documents_classification) PRIMARY KEY (submitfileid, categoryid)
+| Name        | Data Type  |
+| ------------- | -----:|
+| submitfileid    | integer NOT NULL|
+| hbasedocumentid  | character varying(255) NOT NULL |
+| categoryid | integer NOT NULL |
+|categoryname | character varying(255)|
+
+### JSON REST Response
+`{'status': 'ok', 'prediction':[{"tag":"Doc class 1", "probability":0.5},{"tag":"Doc class 2", "probability":0.3},{"tag":"Doc class 3", "probability":0.2}]}`
+
+
 ### Working in the documentation
