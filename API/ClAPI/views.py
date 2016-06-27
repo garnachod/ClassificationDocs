@@ -40,7 +40,7 @@ def _doClassification(id, collection):
         cache.set("models", ModelsLoader(), 100)
         #print "setting"
 
-    prediction = m[lang].predict(text)
+    prediction = m[lang].predict_proba(text)
 
     #print prediction
     return JsonResponse({'status': 'ok', 'prediction':prediction})

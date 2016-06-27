@@ -88,6 +88,18 @@ class MetaModel(Model):
 
         return self.trcl.predict(text)
 
+    def predict_proba(self, text):
+        """
+        predict the probability of tags associated to the text
+
+        :param text: text for the predicction
+        :return: a list objects {tag:"tag", probability:0.XXX}, sorted by descendent probability
+        """
+        if self.trcl == None:
+            raise UnboundLocalError("Should have load the model")
+
+        return self.trcl.predict_proba(text)
+
 
     def test(self):
         """

@@ -83,4 +83,17 @@ class ModelClassification(Model):
 
         return retorno
 
+    def predict_proba(self, text):
+        if self.id_tags == None:
+            raise UnboundLocalError("Should have load the model")
+
+        X = self.dependenceModel.predict(text)
+        prediction_vector = self.model.predict_proba(X)[0]
+
+        retorno = []
+        for index, elem in enumerate(prediction_vector):
+            #print index
+            retorno.append({"tag":self.id_tags[str(index)], "probability":elem})
+
+        return sorted(retorno, key = lambda x: x["probability"], reverse=True)
 
